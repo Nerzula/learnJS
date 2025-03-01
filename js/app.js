@@ -190,3 +190,205 @@ const formattedDate = `${d.toLocaleDateString(
 })}`;
 
 console.log(formattedDate); // Thu Jan 13 2028 13:23:00
+
+const years = Math.floor(Date.now() / 1000 / 60 / 60 / 24 / 365);
+
+console.log(years); // 55
+
+const d2 = new Date();
+const todayEN = Intl.DateTimeFormat('en-US', {weekday: 'long', month: 'long',  day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'}).format(d2);
+const todayRU = Intl.DateTimeFormat('ru-RU', {weekday: 'long', month: 'long',  day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit'}).format(d2);
+
+console.log(todayEN); // Wednesday, August 14, 2024 at 8:34 PM
+console.log(todayRU); // среда, 14 августа 2024 г. в 20:34
+
+const now = new Date();
+const tomorrow = new Date(now);
+		tomorrow.setDate(now.getDate() + 1);
+		tomorrow.setHours(0, 0, 0, 0);
+const minutesBeforeTomorrow = Math.floor((tomorrow - now) / (1000 * 60));
+
+console.log(minutesBeforeTomorrow); // 1358
+
+const lastNumberOfMonth = new Date(2024, 2, 0).getDate();
+
+console.log(lastNumberOfMonth); // 29
+
+/*
+	const number = Number(prompt('Введите число между 0 и 3', ''));
+
+	if (number === 0) {
+	console.log('Вы ввели число 0');
+	}
+
+	if (number === 1) {
+	console.log('Вы ввели число 1');
+	}
+
+	if (number === 2 || number === 3) {
+	console.log('Вы ввели число 2, а может и 3');
+	}
+*/
+
+const numSwitch = 5;
+
+switch (numSwitch) {
+	case 0:
+		console.log('Вы ввели число 0');
+		break;
+	case 1:
+		console.log('Вы ввели число 1');
+	case 2:
+	case 3:
+		console.log('Вы ввели число 2, а может и 3');
+		break;
+	default:
+		console.log('Некорректное число');
+		break;
+}
+
+const day = new Date().getDay();
+
+switch (day) {
+	case 0:
+		console.log('Сегодня Воскресенье');
+		break;
+	case 1:
+		console.log('Сегодня Понедельник');
+		break;
+	case 2:
+		console.log('Сегодня Вторник');
+		break;
+	case 3:
+		console.log('Сегодня Среда');
+		break;
+	case 4:
+		console.log('Сегодня Четверг');
+		break;
+	case 5:
+		console.log('Сегодня Пятница');
+		break;
+	case 6:
+		console.log('Сегодня Суббота');
+		break;
+	default:
+		console.log("Некорректный ввод");
+		break;
+}
+
+
+
+const age = 30;
+
+
+switch (true) {
+	case age >= 0 && age < 12:
+		console.log('Ребёнок');
+		break;
+	case age >= 13 && age < 17:
+		console.log('Подросток');
+		break;
+	case age >= 18 && age < 64:
+		console.log('Взрослый');
+		break;
+	default:
+		console.log('Пожилой человек');
+		break;
+}
+
+// Todo: Tasks 16
+
+function getRandomValue() {
+	return Math.floor(Math.random() * 100 + 1 ); 
+}
+
+console.log(getRandomValue())
+
+function getMaxValue(num1, num2, num3, num4, num5) {
+	return Math.max(...arguments);
+}
+
+console.log(getMaxValue(2, 5, 99, 23, 101))
+
+function getCurrentDayOfWeek(currentDate) {
+	const day = currentDate.getDay();
+
+	switch (day) {
+		case 0:
+			return "Воскресенье"; // если используется return, то break не нужен
+		case 1:
+			return "Понедельник";
+		case 2:
+			return "Вторник";
+		case 3:
+			return "Среда";
+		case 4:
+			return "Четверг";
+		case 5:
+			return "Пятница";
+		case 6:
+			return "Суббота";
+		default:
+			return "Некорректный ввод";
+		}
+}
+
+console.log(getCurrentDayOfWeek(new Date()))
+
+// Todo: Tasks 17
+
+function greet(name, str = 'Hello!') {
+	return `${str}, ${name}!`;
+}
+
+console.log(greet("Alice")); // Вывод: "Hello, Alice!"
+console.log(greet("Bob", "Good morning")); // Вывод: "Good morning, Bob!"
+
+function multiplyExpression(num1, num2) {
+	return num1 * num2;
+}
+
+const multiplyDeclaration = (num1, num2) => num1 * num2;
+console.log(multiplyExpression(2, 3)); // Вывод: 6
+console.log(multiplyDeclaration(4, 5)); // Вывод: 20
+
+function outerFunction() {
+	const innerVar = "I am inside!";
+	function innerFunction() {
+		console.log(innerVar);
+	}
+	innerFunction();
+}
+outerFunction(); // Вывод: "I am inside!"
+
+// console.log(innerVar); // Что будет выведено? Error локальная переменная, не видна в глобальной
+
+// Todo: 18 Tasks
+
+function sayHello(name) {
+	return `Hello, ${name}!`
+}
+
+function greet2(name, callback) {
+	return callback(name);
+}
+
+console.log(greet2("Ekaterina", sayHello)); // "Hello, Ekaterina!"
+
+
+function displayResult(num) {
+	return num * 2;
+}
+function double(num, callback) {
+	return `Result is ${callback(num)}`;
+}
+console.log(double(5, displayResult)); // "Result is 10"
+
+function makeUpperCase(str) {
+	return str.toLocaleUpperCase();
+}
+
+function processString(str, callback) {
+	return callback(str);
+}
+console.log(processString("hello", makeUpperCase)); // "HELLO"
