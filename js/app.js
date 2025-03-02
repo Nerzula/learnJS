@@ -384,11 +384,204 @@ function double(num, callback) {
 }
 console.log(double(5, displayResult)); // "Result is 10"
 
-function makeUpperCase(str) {
-	return str.toLocaleUpperCase();
+const makeUpperCase = str => str.toLocaleUpperCase();
+
+const processString = (str, callback) => callback(str);
+
+console.log(processString("hello", makeUpperCase)); // "HELLO"
+
+// Todo: 19 Tasks
+
+const car = {
+	brand: 'BMW',
+	model: 'X7 M60i xDrive',
+	year: 2010,
+	isNew: true
+};
+
+car.year = 2017;
+delete car.isNew;
+
+console.log(car);
+
+const calculator = {
+	addition: (num1, num2) => num1 + num2,
+	multiplication : (num1, num2) => num1 * num2,
+	division : (num1, num2) => num1 / num2,
+	subtraction : (num1, num2) => num1 - num2,
+};
+
+console.log(calculator.addition(2, 3));
+console.log(calculator.multiplication(2, 3));
+console.log(calculator.division(2, 3));
+console.log(calculator.subtraction(9, 3));
+
+
+const firstName = 'Alex';
+const age2 = 30;
+const address = {
+	country: 'Russia',
+	city: 'Moscow'
+};
+
+const student = {
+	firstName,
+	age2,
+	address
+};
+
+
+const checkIsActive = 'isActive' in student;
+console.log(student);
+console.log(checkIsActive);
+
+// Todo: 20 Tasks
+
+const fruits = ["Apple", "Banana", "Orange", "Grape"];
+console.log(fruits[0], fruits[fruits.length - 1]);
+
+const colors = ["Red", "Green", "Blue"];
+colors.push('Orange');
+colors.shift();
+console.log(colors);
+
+const statuses = [
+	{id: 1, status: "Active" },
+	{id: 2, status: "Pending" },
+	{id: 3, status: "Decline" },
+];
+
+statuses[0].message = "Активен";
+statuses[1].message = "Ожидается ответ";
+statuses[2].message = "Отказано";
+
+statuses.push({
+	id: 4,
+	status: "Complete",
+	message: "Завершено"
+})
+
+console.log(statuses);
+
+// Todo: 21 Tasks
+
+const numbers = [1, 2, 3, 4, 5];
+
+let sum = 0;
+
+for (let index = 0; index < numbers.length; index++) {
+	sum += numbers[index];
 }
 
-function processString(str, callback) {
-	return callback(str);
+console.log(sum);
+
+
+const fruits2 = ['apple', 'banana', 'cherry', 'date'];
+let i = fruits2.length - 1;
+while (i >= 0) {
+	console.log(fruits2[i]);
+	i--;
 }
-console.log(processString("hello", makeUpperCase)); // "HELLO"
+
+const numbers2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let count = 0;
+for (let index = 0; index < numbers2.length; index++) {
+	if(numbers2[index] % 2 === 0) count++;
+}
+
+console.log(count);
+
+
+const products = [
+	{ name: 'Laptop', price: 1500 },
+	{ name: 'Mouse', price: 25 },
+	{ name: 'Keyboard', price: 75 },
+	{ name: 'Monitor', price: 200 },
+];
+
+const overPrice = [];
+
+for (let index = 0; index < products.length; index++) {
+	if(products[index].price > 100) overPrice.push(products[index]);
+}
+
+console.log(overPrice);
+
+const colors2 = ['red', 'green', 'blue', 'yellow'];
+const targetColor = 'blue';
+let found = false;
+let j = 0;
+while (j < colors2.length ) {
+	if(colors2[j] === targetColor) {
+		console.log(colors2[j]);
+		found = true;
+		break;
+	}
+	j++
+}
+
+if (!found) {
+	console.log('Элемент не найден');
+}
+
+const numbers3 = [3, 5, 7, 2, 8, 10, 6, 12];
+let maxNum = 0;
+for (let index = 0; index < numbers3.length; index++) {
+	
+	if(maxNum < numbers3[index]) {
+		maxNum = numbers3[index];
+	}
+}
+
+console.log(maxNum);
+
+const array = [4, 33, 2, 1];
+
+for (let index = 0; index < array.length; index++) {
+	console.log(array[index]);
+	for (let j = 0; j < array.length; j++) {
+		if(array[j] > array[j + 1]) {
+			console.log(`J: ${array[j]}`);
+			const temp = array[j];
+			array[j] = array[j + 1];
+			array[j + 1] = temp;
+		}
+	}
+}
+
+console.log(array);
+
+const users = [
+	{ id: 1, name: "Alex", age: 35, position: "manager" },
+	{ id: 2, name: "Kate", age: 22, position: "qa" },
+	{ id: 3, name: "Nikita", age: 29, position: "developer" },
+];
+
+for (const element of users) {
+	console.log(element);
+}
+
+const numbers5 = [3, 5, 77, 81, 99, 12, 90, 119, 4].sort((a, b) => a - b).reverse();
+
+console.log(numbers5);
+
+const cars = ["audi", "ford", "mercedes", "mazda", "tesla"];
+const newCars = transformIntoString("--");
+
+console.log(newCars); // audi--ford--mercedes--mazda--teslas
+
+function transformIntoString (separator) {
+	return cars.join(separator);
+}
+
+const cars3 = ["audi", "ford", "mercedes", "mazda", "tesla"];
+
+
+function addNewCar(car) {
+	if (!cars.includes(car)) {
+		cars.push(car);
+	}
+}
+
+addNewCar('tesla');
+console.log(cars3);
